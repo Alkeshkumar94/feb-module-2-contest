@@ -7,22 +7,28 @@ let passmsg=document.getElementById("allset");
 let signupForm=document.getElementById("signupform");
 
 emailInput.addEventListener('input', ()=>{
-    if(emailInput.value.length<3 || !emailInput.value.includes('@') || !emailInput.value.includes('.')){
+    if(emailInput.value.length<=3 || !emailInput.value.includes('@') || !emailInput.value.includes('.')){
         emailError.textContent="Make sure email is more than 3 characters and has @ and a."
     }
     else{
         emailError.textContent="";
+        if (passwordInput.value.length > 8) {
+            passmsg.innerText = "All Good to go!";
+        }
     }
 })
 passwordInput.addEventListener('input',()=>{
-    if(passwordInput.value.length<8){
+    if(passwordInput.value.length<=8){
         passwordError.textContent="Make sure password is more than 8 characters."
     }
     else{
         passwordError.textContent="";
-        passmsg.innerText="All Good to go!";
+        if (emailInput.value.length > 3 && emailInput.value.includes('@') && emailInput.value.includes('.')) {
+            passmsg.innerText = "All Good to go!";
+        }
     }
 })
+
 
 
 submitButton.addEventListener('click',  (event)=> {
